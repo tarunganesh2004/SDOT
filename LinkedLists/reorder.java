@@ -47,33 +47,53 @@ class Main {
         return prev;
     }
 
-    static void reorder(){
-      node fast=head;
-      node slow=head;
-      while(fast.next!=null&&fast.next.next!=null)
-      {
-          fast=fast.next.next;
-          slow=slow.next;
-      }
-      node l2=slow.next;
-      slow.next=null;
-      l2=reverse(l2);
-      node l1=head;
-      node res=new node(0);
-      node temp=res;
-      while(l1!=null||l2!=null){
-          if(l2!=null){
-              res.next=l2;
-              l2=l2.next;
-              res=res.next;
-          }
-          if(l1!=null){
-              res.next=l1;
-              l1=l1.next;
-              res=res.next;
-          }
-      }
-      head=temp.next;
+    static void reorder() {
+        node fast = head;
+        node slow = head;
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        node l2 = slow.next;
+        slow.next = null;
+        l2 = reverse(l2);
+        node l1 = head;
+        node res = new node(0);
+        node temp = res;
+        while (l1 != null || l2 != null) {
+            if (l2 != null) {
+                res.next = l2;
+                l2 = l2.next;
+                res = res.next;
+            }
+            if (l1 != null) {
+                res.next = l1;
+                l1 = l1.next;
+                res = res.next;
+            }
+        }
+        head = temp.next;
+    }
+    
+    static void reorderLL(node head) {
+        if (head == null)
+            return;
+        node slow = head;
+        node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        node head2 = reverse(slow.next);
+        slow.next = null;
+        while (head != null && head2 != null) {
+            node temp1 = head.next;
+            node temp2 = head2.next;
+            head2.next = head.next;
+            head.next = head2;
+            head = temp1;
+            head2 = temp2;
+        }
     }
 
     public static void main(String[] args) {
