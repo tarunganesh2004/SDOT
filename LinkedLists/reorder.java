@@ -75,7 +75,7 @@ class Main {
         head = temp.next;
     }
     
-    static void reorderLL(node head) {
+    static void reorderLL(node head) { // 1 2 3 4 5 , o/p: 1 5 2 4 
         if (head == null)
             return;
         node slow = head;
