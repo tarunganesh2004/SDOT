@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Main
+class Main
 {
     static node head=null;
 	 static class node{
@@ -64,7 +64,7 @@ public class Main
        head=result;
 	 }
 	 // another method
-	 static void rotate(int k){
+	 static void rotatell(int k){
 	     node cur=head;
       if(head==null) return;
       while(cur.next!=null) cur=cur.next;
@@ -86,7 +86,7 @@ public class Main
 	     }
 	     node temp=slow.next;
 	     slow.next=null;
-	     temp=reverse(temp);
+	     temp=reverseLL(temp);
 	     node cur=head;
 	     while(temp!=null){
 	         if(cur.data!=temp.data){

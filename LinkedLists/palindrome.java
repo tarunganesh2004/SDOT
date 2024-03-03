@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Main
+class Main
 {
     static node head=null;
 	 static class node{
