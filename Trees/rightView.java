@@ -1,4 +1,8 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Scanner;
 
 class node {
     int data;
@@ -12,8 +16,9 @@ class node {
     }
 }
 
-class treeCreation {
-    public static node built(String s[]) {
+public class rightView {
+
+    public static node built(String[] s) {
         if (s[0] == "N" || s.length == 0)
             return null;
         Queue<node> q = new LinkedList<>();
@@ -40,38 +45,24 @@ class treeCreation {
         return root;
     }
 
-    public static void inOrderTraversal(node root) {
+    public static void rightView(node root, List<Integer> l, int level) {
         if (root == null)
             return;
-        inOrderTraversal(root.left);
-        System.out.println(root.data + " ");
-        inOrderTraversal(root.right);
-    }
-
-    public static void printLevelOrder(node root) {
-        if (root == null)
-            return;
-        Queue<node> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) {
-            int levelNodes = q.size();
-            while (levelNodes > 0) {
-                node cur = q.poll();
-                System.out.print(cur.data + " ");
-                if (cur.left != null)
-                    q.add(cur.left);
-                if (cur.right != null)
-                    q.add(cur.right);
-                levelNodes--;
-            }
-            System.out.println();
+        if (l.size() == level) {
+            l.add(root.data);
+        }
+        if (root.right != null) {
+            rightView(root.right, l, level + 1);
+        }
+        if (root.left != null) {
+            rightView(root.left, l, level+1);
         }
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] s = sc.nextLine().split(" ");
         node root = built(s);
-        // printLevelOrder(root);
         ArrayList<Integer> l = new ArrayList<>();
         rightView(root, l, 0);
         for (int x : l) {
