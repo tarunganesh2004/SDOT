@@ -71,12 +71,7 @@ class treeCreation {
         Scanner sc = new Scanner(System.in);
         String[] s = sc.nextLine().split(" ");
         node root = built(s);
-        // printLevelOrder(root);
-        ArrayList<Integer> l = new ArrayList<>();
-        rightView(root, l, 0);
-        for (int x : l) {
-            System.out.print(x+" ");
-        }
+        printLevelOrder(root);
         sc.close();
     }
 }

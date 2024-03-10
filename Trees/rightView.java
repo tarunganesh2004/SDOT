@@ -19,7 +19,7 @@ class node {
 public class rightView {
 
     public static node built(String[] s) {
-        if (s[0] == "N" || s.length == 0)
+        if (s[0].equals("N") || s.length == 0)
             return null;
         Queue<node> q = new LinkedList<>();
         node root = new node(Integer.parseInt(s[0]));
@@ -28,7 +28,7 @@ public class rightView {
         while (!q.isEmpty() && i < s.length) {
             node cur = q.poll();
             String curVal = s[i];
-            if (curVal != "N") {
+            if (!curVal.equals("N")) {
                 cur.left = new node(Integer.parseInt(curVal));
                 q.add(cur.left);
             }
@@ -36,7 +36,7 @@ public class rightView {
             if (i >= s.length)
                 break;
             curVal = s[i];
-            if (curVal != "N") {
+            if (!curVal.equals("N")) {
                 cur.right = new node(Integer.parseInt(curVal));
                 q.add(cur.right);
             }
@@ -45,17 +45,17 @@ public class rightView {
         return root;
     }
 
-    public static void rightView(node root, List<Integer> l, int level) {
+    public static void rightview(node root, List<Integer> l, int level) {
         if (root == null)
             return;
         if (l.size() == level) {
             l.add(root.data);
         }
         if (root.right != null) {
-            rightView(root.right, l, level + 1);
+            rightview(root.right, l, level + 1);
         }
         if (root.left != null) {
-            rightView(root.left, l, level+1);
+            rightview(root.left, l, level+1);
         }
     }
 
@@ -64,7 +64,7 @@ public class rightView {
         String[] s = sc.nextLine().split(" ");
         node root = built(s);
         ArrayList<Integer> l = new ArrayList<>();
-        rightView(root, l, 0);
+        rightview(root, l, 0);
         for (int x : l) {
             System.out.print(x+" ");
         }
