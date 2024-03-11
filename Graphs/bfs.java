@@ -3,6 +3,7 @@ import java.util.*;
 class graph {
     LinkedList<Integer> adj[];
 
+    @SuppressWarnings("unchecked")
     graph(int v) {
         adj = new LinkedList[v];
         for (int i = 0; i < v; i++) {
