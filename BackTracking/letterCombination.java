@@ -11,7 +11,8 @@ class letterCombination {
 
     static void com(String s, String res) {
         if (s.length() == 0) {
-            System.out.print(res + " ");
+            StringBuilder sb = new StringBuilder(res).reverse();
+            System.out.print(sb.toString() + " ");
             return;
         }
         String key = keypad[s.charAt(0) - '1'];
@@ -23,6 +24,7 @@ class letterCombination {
     
     static void printCombinations(String s, String res) {
         if (s.length() == 0) {
+            StringBuilder sb = new StringBuilder(res).reverse();
             System.out.print(res + " ");
             return;
 
@@ -38,9 +40,12 @@ class letterCombination {
    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String s = sc.next();
-        // com(s, "");
-        printCombinations(s, "");
+        String s1 = sc.next();
+        StringBuilder reversedString = new StringBuilder(s1).reverse();
+        String s = reversedString.toString();
+
+        com(s, "");
+        // printCombinations(s, "");
         sc.close();
     }
 }
