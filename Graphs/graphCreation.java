@@ -18,6 +18,8 @@ class graph {
         adj[d].add(s);
     }
 
+    // DFS 
+    
     void dfs(int source) {
         boolean visited[] = new boolean[adj.length];
         Stack<Integer> st = new Stack<>();

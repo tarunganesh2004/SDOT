@@ -1,0 +1,55 @@
+// Portal Logic to pass DFS
+
+import java.util.LinkedList;
+import java.util.Scanner;
+import java.util.*;
+
+
+class Main{
+  private int V;
+  private LinkedList<Integer> adj[];
+  Main(int v) {
+    V=v;
+        adj= new LinkedList[v];
+        for (int i = 0; i < v; i++) {
+            adj[i] = new LinkedList<>();
+        }
+    }
+  void DFSUtil(int v,boolean visited[]){
+    visited[v]=true;
+    System.out.print(v+" ");
+    Iterator<Integer> i=adj[v].listIterator();
+    while(i.hasNext()){
+      int n=i.next();
+      if(!visited[n]){
+        DFSUtil(n,visited);
+      }
+    }
+  }
+  void DFS(int v){
+    boolean visited[]=new boolean[V];
+    DFSUtil(v,visited);
+  }
+  void addEdge(int s, int d) {
+        adj[s].add(d);
+        adj[d].add(s);
+    }
+  
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //System.out.println("Enter the number of vertices and edges: ");
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        sc.nextLine();
+        Main g=new Main(n);
+        for (int i = 0; i < m; i++) {
+            int s = sc.nextInt(); // source
+            int d = sc.nextInt(); // destination
+            //sc.nextLine();
+            g.addEdge(s, d);
+        }
+
+        g.DFS(0);
+        sc.close();
+    }
+}
