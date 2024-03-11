@@ -42,5 +42,6 @@ class minimumDeletions {
             numsDivide[i] = sc.nextInt();
         }
         System.out.println(minOperations(nums, numsDivide));
+        sc.close();
     }
 }
